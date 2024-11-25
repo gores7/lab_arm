@@ -1,0 +1,15 @@
+body {
+    background-color:  #f7f7f7;
+}
+/* для планшетов и фаблетов */
+@media (min-width: 481px) and (max-width:768px) {
+    body {
+        background-color:  #f7f7f7;
+    }
+}
+/* для декстопов */
+@media (min-width:769px) {
+    body {
+        background-color:  #f7f7f7;
+    }
+}

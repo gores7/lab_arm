@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link media="handheld" rel="stylesheet" href="mobile.css">
+    <link media="screen" rel="stylesheet" href="desktop.css">
+    <title> Форма добавления судна</title>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+
+            font-family: sans-serif;
+        }
+
+        .container {
+
+            display: flex;
+            margin: auto;
+            margin-top: 50px;
+            align-items: center;
+        }
+
+        .form-container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h1> Должностная инструкция по работе с речным и морским транспортом </h1>
+        <div id="nav">
+            <ul>
+                <li><a href="main.html"> Главная </a></li>
+                <li><a href="routes_data.html"> Список маршрутов </a></li>
+                <li><a href="cargo_form.html"> Добавить груз </a></li>
+                <li><a href="vessel_form.html"> Добавить судно </a></li>
+                <li><a href="vessel_data.html"> Список судов </a></li>
+                <li><a href="report.html"> Отчеты </a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-container">
+            <h1> Ввод данных о новом судне </h1>
+            <form id="vesselForm">
+                <label for="vesselName"> Название судна: </label>
+                <input type="text" id="vesselName" name="vesselName" required>
+
+                <label for="vesselName"> Номер судна: </label>
+                <input type="text" id="vesselName" name="vesselNumber" required>
+
+                <label for="vesselSelect"> Тип судна: </label>
+                <select id="vesselSelect" name="vesselSelect" required>
+                    <option value=""> Выберите тип судна </option>
+                    <option value="Vessel A"> Контейнеровоз </option>
+                    <option value="Vessel B"> Танкер </option>
+                    <option value="Vessel C"> Пассажирский </option>
+                    <option value="Vessel D"> Лесовоз </option>
+                    <option value="Vessel E"> Сухогруз </option>
+                </select>
+
+                <label for="vesselCapacity"> Грузоподъемность (тонн): </label>
+                <input type="number" id="vesselCapacity" name="vesselCapacity" min="0" required>
+
+                <label for="vesselLength"> Длина (м): </label>
+                <input type="number" id="vesselLength" name="vesselLength" min="0" required>
+
+                <label for="vesselWidth"> Ширина (м): </label>
+                <input type="number" id="vesselWidth" name="vesselWidth" min="0" required>
+
+
+                <button type="submit"> Сохранить </button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
