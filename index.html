@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link media="handheld" rel="stylesheet" href="mobile.css">
     <link media="screen" rel="stylesheet" href="desktop.css">
-    <title> Форма добавления судна</title>
+    <title> Форма добавления груза </title>
 
     <style>
         body {
@@ -13,12 +13,12 @@
             flex-direction: column;
             min-height: 100vh;
             margin: 0;
-
+            
             font-family: sans-serif;
         }
 
         .container {
-
+            
             display: flex;
             margin: auto;
             margin-top: 50px;
@@ -80,36 +80,27 @@
 
     <div class="container">
         <div class="form-container">
-            <h1> Ввод данных о новом судне </h1>
-            <form id="vesselForm">
-                <label for="vesselName"> Название судна: </label>
-                <input type="text" id="vesselName" name="vesselName" required>
+            <h1>Ввод информации о грузе</h1>
+            <form id="cargoForm">
+                <label for="cargoName"> Название груза: </label>
+                <input type="text" id="cargoName" name="cargoName" required>
 
-                <label for="vesselName"> Номер судна: </label>
-                <input type="text" id="vesselName" name="vesselNumber" required>
+                <label for="cargoType"> Тип груза: </label>
+                <input type="text" id="cargoType" name="cargoType" required>
 
-                <label for="vesselSelect"> Тип судна: </label>
+                <label for="cargoWeight"> Вес (кг): </label>
+                <input type="number" id="cargoWeight" name="cargoWeight" min="0" required>
+
+                <label for="vesselSelect"> Выберите судно: </label>
                 <select id="vesselSelect" name="vesselSelect" required>
-                    <option value=""> Выберите тип судна </option>
-                    <option value="Vessel A"> Контейнеровоз </option>
-                    <option value="Vessel B"> Танкер </option>
-                    <option value="Vessel C"> Пассажирский </option>
-                    <option value="Vessel D"> Лесовоз </option>
-                    <option value="Vessel E"> Сухогруз </option>
+                    <option value=""> Выберите судно </option>
+                    <option value="Vessel A"> Судно A </option>
+                    <option value="Vessel B"> Судно B </option>
+                    <option value="Vessel C"> Судно C </option>
                 </select>
 
-                <label for="vesselCapacity"> Грузоподъемность (тонн): </label>
-                <input type="number" id="vesselCapacity" name="vesselCapacity" min="0" required>
-
-                <label for="vesselLength"> Длина (м): </label>
-                <input type="number" id="vesselLength" name="vesselLength" min="0" required>
-
-                <label for="vesselWidth"> Ширина (м): </label>
-                <input type="number" id="vesselWidth" name="vesselWidth" min="0" required>
-
-
-                <button type="submit"> Сохранить </button>
-            </form>
+                <button type="submit">Сохранить</button>
+            </form>  
         </div>
     </div>
 </body>
