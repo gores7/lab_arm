@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link media="handheld" rel="stylesheet" href="mobile.css">
+    <link media="screen" rel="stylesheet" href="desktop.css">
+    <title> Список судов </title>
+
+    <style>
+        table {
+            width: 70%;
+            border-collapse: collapse;
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h1> Должностная инструкция по работе с речным и морским транспортом </h1>
+        <div id="nav">
+            <ul>
+                <li><a href="main.html"> Главная </a></li>
+                <li><a href="routes_data.html"> Список маршрутов </a></li>
+                <li><a href="cargo_form.html"> Добавить груз </a></li>
+                <li><a href="vessel_form.html"> Добавить судно </a></li>
+                <li><a href="vessel_data.html"> Список судов </a></li>
+                <li><a href="report.html"> Отчеты </a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div>
+        <table>
+            <tr>
+                <th> Название судна</th>
+                <th> Номер судна </th>
+                <th> Тип судна </th>
+                <th> Статус </th>
+            </tr>
+            <tr>
+                <td> Seabreeze </td>
+                <td> 9224752 </td>
+                <td> Контейнеровоз </td>
+                <td> В пути </td>
+            </tr>
+            <tr>
+                <td> Ocean King </td>
+                <td> 9831684 </td>
+                <td> Ледокол </td>
+                <td> В порту </td>
+            </tr>
+            <tr>
+                <td> Pacific Dream </td>
+                <td> 9224764 </td>
+                <td> Пассажирский </td>
+                <td> В пути </td>
+            </tr>
+            <tr>
+                <td> Cargo Express </td>
+                <td> 9648714 </td>
+                <td> Контейнеровоз </td>
+                <td> Задержка </td>
+            </tr>
+            <tr>
+                <td> Iron Horse </td>
+                <td> 9839208 </td>
+                <td> Сухогруз </td>
+                <td> На ремонте </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
