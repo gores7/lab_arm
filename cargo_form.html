@@ -101,34 +101,50 @@
                 </select>
 
                 <button type="submit">Сохранить</button>
-            </form>  
+            </form> 
+            <button id="downloadButton">Скачать данные</button>
         </div>
     </div>
 
     <script>
         document.getElementById('cargoForm').addEventListener('submit', function(event) {
-          event.preventDefault();
-      
-          const formData = new FormData(this);
-          const data = {};
-      
-          for (const [key, value] of formData) {
-            data[key] = value;
-          }
-      
-          if (!data.name || !data.type || !data.length) {
-              alert('Пожалуйста, заполните все необходимые поля: имя, тип и длина.');
-              return;
-          }
-      
-            let shipDataString = JSON.stringify(data, null, 2);
-      
-          const blob = new Blob([cargoDataString], { type: 'text/plain' });
-          saveAs(blob, 'data.json');
-      
+            event.preventDefault(); // Предотвращаем стандартную отправку формы
+
+            const formData = new FormData(this); // Получаем данные из формы
+            const data = {};
+
+            for (const [key, value] of formData) {
+              data[key] = value;
+            }
+
+            // Формирование текстовой строки
+            let cargoDataString = `Название груза: ${data.cargoName}\n`;
+            cargoDataString += `Тип груза: ${data.cargoType}\n`;
+            cargoDataString += `Вес (кг): ${data.cargoWeight}\n`;
+            cargoDataString += `Судно: ${data.vesselSelect}\n`;
+            cargoDataString += `---------------------------\n`; // Разделитель для удобства
+
+
+            // Получение предыдущего контента (если файл уже есть)
+            const fileName = 'cargo_data.txt'; // Имя файла
+            let existingContent = "";
+
+
+            // Запись в файл
+            const blob = new Blob([existingContent + cargoDataString], { type: 'text/plain' });
+            saveAs(blob, fileName);
+
+            // Очистка формы после успешной записи
             this.reset();
         });
-      
+
+        document.getElementById('downloadButton').addEventListener('click', function() {
+        const fileName = 'cargo_data.txt';
+        // Создаем пустой файл с именем cargo_data.txt
+          const blob = new Blob([''], { type: 'text/plain' });
+          saveAs(blob, fileName); // Сохраняем файл
+        });
+        
     </script>
 </body>
 
