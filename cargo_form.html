@@ -6,7 +6,6 @@
     <link media="handheld" rel="stylesheet" href="mobile.css">
     <link media="screen" rel="stylesheet" href="desktop.css">
     <title> Форма добавления груза </title>
-    <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
     
     <style>
         body {
@@ -100,51 +99,48 @@
                     <option value="Судно С"> Судно C </option>
                 </select>
 
-                <button type="submit">Сохранить</button>
+                <button type="submit"> Сохранить </button>
             </form> 
-            <button id="downloadButton">Скачать данные</button>
         </div>
     </div>
 
     <script>
-        document.getElementById('cargoForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Предотвращаем стандартную отправку формы
+        const form = document.getElementById('cargoForm');
+        const clearDataButton = document.getElementById('clearData');
 
-            const formData = new FormData(this); // Получаем данные из формы
-            const data = {};
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Предотвращаем отправку формы по умолчанию
 
-            for (const [key, value] of formData) {
-              data[key] = value;
-            }
+            const cargoName = document.getElementById('cargoName').value;
+            const cargoType = document.getElementById('cargoType').value;
+            const cargoWeight = document.getElementById('cargoWeight').value;
+            const vesselSelect = document.getElementById('vesselSelect').value;
 
-            // Формирование текстовой строки
-            let cargoDataString = `${data.cargoName}\n`;
-            cargoDataString += `${data.cargoType}\n`;
-            cargoDataString += `${data.cargoWeight}\n`;
-            cargoDataString += `${data.vesselSelect}\n`;
-            cargoDataString += `---------------------------\n`; // Разделитель для удобства
+            let existingData = localStorage.getItem('resourceData');
+            existingData = existingData ? existingData : '';
 
+            const entries = existingData.trim().split('\r\n').filter(entry => entry);
+            
 
-            // Получение предыдущего контента (если файл уже есть)
-            const fileName = 'cargo_data.txt'; // Имя файла
-            let existingContent = "";
+            const newData = `${cargoName}, ${cargoType}, ${cargoWeight}, ${vesselSelect};\r\n`;
 
+            localStorage.setItem('resourceData', existingData + newData);
 
-            // Запись в файл
-            const blob = new Blob([existingContent + cargoDataString], { type: 'text/plain' });
-            saveAs(blob, fileName);
+            const downloadLink = document.createElement('a');
+            downloadLink.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(existingData + newData);
+            downloadLink.download = 'resource_data.txt';
 
-            // Очистка формы после успешной записи
-            this.reset();
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+
+            form.reset();
         });
 
-        document.getElementById('downloadButton').addEventListener('click', function() {
-        const fileName = 'cargo_data.txt';
-        // Создаем пустой файл с именем cargo_data.txt
-          const blob = new Blob([''], { type: 'text/plain' });
-          saveAs(blob, fileName); // Сохраняем файл
+        clearDataButton.addEventListener('click', function () {
+            localStorage.removeItem('resourceData');
+            alert('Данные успешно очищены!'); // Уведомление об успешной очистке
         });
-        
     </script>
 </body>
 
