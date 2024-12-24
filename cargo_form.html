@@ -103,6 +103,32 @@
             </form>  
         </div>
     </div>
+
+    <script>
+        document.getElementById('cargoForm').addEventListener('submit', function(event) {
+          event.preventDefault();
+      
+          const formData = new FormData(this);
+          const data = {};
+      
+          for (const [key, value] of formData) {
+            data[key] = value;
+          }
+      
+          if (!data.name || !data.type || !data.length) {
+              alert('Пожалуйста, заполните все необходимые поля: имя, тип и длина.');
+              return;
+          }
+      
+            let shipDataString = JSON.stringify(data, null, 2);
+      
+          const blob = new Blob([cargoDataString], { type: 'text/plain' });
+          saveAs(blob, 'data.json');
+      
+            this.reset();
+        });
+      
+    </script>
 </body>
 
 </html>
